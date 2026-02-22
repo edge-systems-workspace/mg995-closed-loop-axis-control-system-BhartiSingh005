@@ -21,6 +21,9 @@ const int SERVO_PIN = 9;
 // TODO 3: Create variable to store servo angle
 int targetAngle = 0;
 
+// Add at the top with other variables
+int previousAngle = 0;
+
 void setup() {
 
     // TODO 4: Initialize Serial communication (9600 baud)
@@ -52,13 +55,20 @@ void loop() {
         // TODO 9: Validate angle range (0–180)
         if (targetAngle >= 0 && targetAngle <= 180) {
 
+            // Print previous angle
+            Serial.print("Previous angle: ");
+            Serial.println(previousAngle);
+
             // Move servo to target angle
             axisServo.write(targetAngle);
 
-            // TODO 10: Print confirmation message
+            // Print confirmation message
             Serial.print("Servo moved to: ");
             Serial.print(targetAngle);
             Serial.println(" degrees");
+
+            // Update previous angle
+            previousAngle = targetAngle;
 
         } else {
 
