@@ -70,6 +70,9 @@ void loop() {
             // Update previous angle
             previousAngle = targetAngle;
 
+            // Add this delay here to prevent rapid consecutive commands
+            delay(500);  // 0.5 second delay
+
         } else {
 
             Serial.println("Error: Invalid angle! Enter value between 0 and 180.");
